@@ -3,10 +3,11 @@ package p2
 
 object Problem2 extends ProjectEulerProblem {
   override def apply(): Int = {
-    Stream.iterate[(Int, Int)]((1, 1)) { t => (t._2, t._1 + t._2) }
-      .takeWhile(_._2 < 4000000)
-      .map(_._2)
+    fibonacciFrom(1, 1)
+      .takeWhile(_ < 4000000)
       .filter(_ % 2 == 0)
       .sum
   }
+
+  private def fibonacciFrom(n1: Int, n2: Int): Stream[Int] = n1 #:: fibonacciFrom(n2, n1 + n2)
 }
