@@ -15,4 +15,7 @@ class H0T0Tests {
 
   @Test
   def Problem4Test(): Unit = assertEquals(906609, Problem4())
+
+  @Test
+  def problem5Test(): Unit = assertEquals(232792560, Problem5())
 }
