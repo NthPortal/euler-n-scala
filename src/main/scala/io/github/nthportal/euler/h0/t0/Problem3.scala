@@ -1,5 +1,5 @@
 package io.github.nthportal.euler
-package p3
+package h0.t0
 
 object Problem3 extends ProjectEulerProblem {
   private val num = 600851475143L
@@ -12,10 +12,9 @@ object Problem3 extends ProjectEulerProblem {
   }
 
   private def firstFactor(num: Long): Option[Long] = {
-    primesIn {
-      Stream.iterate[Long](3)(_ + 2)
-        .takeWhile(_ < math.sqrt(num))
-    }.find(num % _ == 0)
+    primesIn(Stream.iterate[Long](3)(_ + 2))
+      .takeWhile(_ < math.sqrt(num))
+      .find(num % _ == 0)
   }
 
   private def primesIn(s: Stream[Long]): Stream[Long] = s.head #:: primesIn(s.tail filter { _ % s.head != 0 })
