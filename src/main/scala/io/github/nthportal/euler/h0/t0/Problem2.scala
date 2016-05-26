@@ -1,8 +1,8 @@
 package io.github.nthportal.euler
-package p2
+package h0.t0
 
 object Problem2 extends ProjectEulerProblem {
-  override def apply(): Int = {
+  override def apply(): Long = {
     fibonacciFrom(1, 1)
       .takeWhile(_ < 4000000)
       .filter(_ % 2 == 0)
