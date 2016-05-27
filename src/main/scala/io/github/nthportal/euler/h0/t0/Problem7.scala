@@ -10,5 +10,5 @@ object Problem7 extends ProjectEulerProblem {
       .head
   }
 
-  private def primesIn(s: Stream[Long]): Stream[Long] = s.head #:: primesIn(s.tail filter { _ % s.head != 0 })
+  private def primesIn(s: Stream[Long]): Stream[Long] = s.filter(Util.firstFactor(_).isEmpty)
 }
