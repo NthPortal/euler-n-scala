@@ -5,7 +5,7 @@ object Problem7 extends ProjectEulerProblem {
   private val goal = 10001
 
   override def apply(): Long = {
-    Util.primes
+    Primes.primes
       .drop(goal - 1)
       .head
   }

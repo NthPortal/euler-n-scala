@@ -4,7 +4,7 @@ package h0.t0
 object Problem5 extends ProjectEulerProblem {
   override def apply(): Long = {
     (1 to 20)
-      .map(Util.primeFactors(_).toList)
+      .map(Primes.primeFactors(_).toList)
       .map(_.groupBy(identity).mapValues(_.size))
       .fold(Map()) { (m1, m2) =>
         (m1.toSeq ++ m2.toSeq)

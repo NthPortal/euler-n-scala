@@ -1,7 +1,7 @@
 package io.github.nthportal.euler.h0.t0
 
-object Util {
-  private val basicPrimeSearchStream = 2 #:: Stream.iterate[Long](3){_ + 2}
+object Primes {
+  private val basicPrimeSearchStream = 2 #:: Stream.iterate[Long](3) { _ + 2 }
 
   def primeFactors(num: Long): Stream[Long] = {
     num match {
@@ -15,13 +15,13 @@ object Util {
     }
   }
 
+  def primes: Stream[Long] = primesIn(basicPrimeSearchStream, Stream.empty)
+
   private def firstFactor(num: Long, searchStream: Stream[Long]): Option[Long] = {
     searchStream
       .takeWhile(_ <= math.sqrt(num))
       .find(num % _ == 0)
   }
-
-  def primes: Stream[Long] = primesIn(basicPrimeSearchStream, Stream.empty)
 
   private def primesIn(toSearch: Stream[Long], prevPrimes: Stream[Long]): Stream[Long] = {
     toSearch.headOption match {
