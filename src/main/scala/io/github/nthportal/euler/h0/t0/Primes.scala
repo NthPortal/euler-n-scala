@@ -1,21 +1,25 @@
 package io.github.nthportal.euler.h0.t0
 
 object Primes {
-  private val basicPrimeSearchStream = 2 #:: Stream.iterate[Long](3) { _ + 2 }
+  def primes: Stream[Long] = 2 #:: primesIn(oddNumbers, Stream.empty)
 
-  def primeFactors(num: Long): Stream[Long] = {
+  def primeFactors(num: Long): Stream[Long] = findPrimeFactors(num, basicPrimeSearchStream)
+
+  private def findPrimeFactors(num: Long, searchStream: Stream[Long]): Stream[Long] = {
     num match {
-      case i if i < 0 => primeFactors(-i)
+      case i if i < 0 => findPrimeFactors(-i, searchStream)
       case 0 | 1 => Stream.empty
       case n =>
-        firstFactor(n, basicPrimeSearchStream) match {
-          case Some(factor) => factor #:: primeFactors(n / factor)
+        firstFactor(n, searchStream) match {
+          case Some(factor) => factor #:: findPrimeFactors(n / factor, searchStream)
           case None => Stream(n)
         }
     }
   }
 
-  def primes: Stream[Long] = primesIn(basicPrimeSearchStream, Stream.empty)
+  private def oddNumbers = Stream.iterate[Long](3) { _ + 2 }
+
+  private def basicPrimeSearchStream = 2 #:: oddNumbers
 
   private def firstFactor(num: Long, searchStream: Stream[Long]): Option[Long] = {
     searchStream
