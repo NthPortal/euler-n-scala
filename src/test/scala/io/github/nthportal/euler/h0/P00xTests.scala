@@ -1,9 +1,10 @@
-package io.github.nthportal.euler.h0.t0
+package io.github.nthportal.euler.h0
 
+import io.github.nthportal.euler.h0.t0._
 import org.junit.Assert._
 import org.junit.Test
 
-class H0T0Tests {
+class P00xTests {
   @Test
   def Problem1Test(): Unit = assertEquals(233168, Problem1())
 

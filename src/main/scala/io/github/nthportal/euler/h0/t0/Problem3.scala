@@ -1,6 +1,8 @@
 package io.github.nthportal.euler
 package h0.t0
 
+import io.github.nthportal.euler.util.Primes
+
 object Problem3 extends ProjectEulerProblem {
   private val num = 600851475143L
 

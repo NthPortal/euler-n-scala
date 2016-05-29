@@ -1,12 +1,8 @@
 package io.github.nthportal.euler
 package h0.t0
 
-object Problem7 extends ProjectEulerProblem {
-  private val goal = 10001
+import io.github.nthportal.euler.util.Primes
 
-  override def apply(): Long = {
-    Primes.primes
-      .drop(goal - 1)
-      .head
-  }
+object Problem7 extends ProjectEulerProblem {
+  override def apply(): Long = Primes.primes.drop(10000).head
 }
