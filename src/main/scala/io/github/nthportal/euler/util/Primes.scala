@@ -2,8 +2,7 @@ package io.github.nthportal.euler.util
 
 private class Primes {
   import Primes._
-  private val ps: Stream[Long] = oddNumbers.filter(firstFactor(_, ps).isEmpty)
-  val stream = 2 #:: ps
+  val stream: Stream[Long] = 2 #:: oddNumbers.filter(firstFactor(_, stream).isEmpty)
 }
 
 object Primes {
