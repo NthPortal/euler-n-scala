@@ -1,6 +1,8 @@
 package io.github.nthportal.euler
 package h0.t0
 
+import io.github.nthportal.euler.util.Primes
+
 object Problem7 extends ProjectEulerProblem {
   private val goal = 10001
 
