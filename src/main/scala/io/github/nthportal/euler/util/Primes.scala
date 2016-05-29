@@ -9,20 +9,21 @@ private class Primes {
 object Primes {
   def primes: Stream[Long] = new Primes().stream
 
-  def primeFactors(num: Long): Stream[Long] = findPrimeFactors(num, basicPrimeSearchStream)
+  def primeFactors(num: Long): Stream[Long] = {
+    num match {
+      case 0 | 1 | -1 => Stream.empty
+      case n => findPrimeFactors(n, basicPrimeSearchStream)
+    }
+  }
 
   private def oddNumbers = Stream.iterate[Long](3) { _ + 2 }
 
   private def basicPrimeSearchStream = 2 #:: oddNumbers
 
   private def findPrimeFactors(num: Long, searchStream: Stream[Long]): Stream[Long] = {
-    num match {
-      case 0 | 1 | -1 => Stream.empty
-      case n =>
-        firstFactor(n, searchStream) match {
-          case Some(factor) => factor #:: findPrimeFactors(n / factor, searchStream)
-          case None => Stream(n)
-        }
+    firstFactor(num, searchStream) match {
+      case Some(factor) => factor #:: findPrimeFactors(num / factor, searchStream)
+      case None => Stream(num)
     }
   }
 
