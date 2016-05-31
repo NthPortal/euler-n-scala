@@ -1,7 +1,8 @@
 package io.github.nthportal.euler
 package h0.t1
 
-import scala.annotation.tailrec
+import io.github.nthportal.euler.util.Parse
+
 import scala.util.{Success, Try}
 
 object Problem11 extends ProjectEulerProblem {
@@ -32,7 +33,7 @@ object Problem11 extends ProjectEulerProblem {
   private val numbers =
     numStr.lines
       .map(_.split(' ').toList)
-      .map(_.map(strToNum))
+      .map(_.map(Parse.twoDigitStringAsNum))
       .toList
 
   override def apply(): Long = {
@@ -41,13 +42,6 @@ object Problem11 extends ProjectEulerProblem {
             j <- numbers(i).indices
       } yield productsAt(i, j)
     }.flatten.max
-  }
-
-  @tailrec
-  private def strToNum(s: String): Long = {
-    if (s.startsWith("0")) strToNum(s.substring(1))
-    else if (s.isEmpty) 0
-    else s.toLong
   }
 
   private def productsAt(i: Int, j: Int): List[Long] = {
@@ -62,7 +56,7 @@ object Problem11 extends ProjectEulerProblem {
   private def productFrom(i: Int, j: Int, f: (((Int, Int)) => (Int, Int))): Option[Long] = {
     Stream.iterate((i, j))(f)
       .take(numAdjacent)
-      .map(t => Try(numbers(t._1)(t._2)))
+      .map(t => Try(numbers(t._1)(t._2).toLong))
       .fold[Try[Long]](Success(1))((t1, t2) => for { l1 <- t1; l2 <- t2 } yield l1 * l2)
       .toOption
   }
