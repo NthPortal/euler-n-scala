@@ -7,4 +7,7 @@ import org.junit.Test
 class P02xTests {
   @Test
   def problem20Test(): Unit = assertEquals(648, Problem20())
+
+  @Test
+  def problem21Test(): Unit = assertEquals(31626, Problem21())
 }
