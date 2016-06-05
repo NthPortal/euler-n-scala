@@ -1,13 +1,15 @@
 package io.github.nthportal.euler.util.maths
 
-import io.github.nthportal.euler.util.maths.streams.Primes
-
 object Primes {
   def primes: Stream[Long] = streams.primes.get
 
+  def isPrime(num: Long): Boolean = num > 0 && primeFactors(num).size == 1
+
+  def isPrime(num: Long, primes: streams.Primes): Boolean = num > 0 && primeFactors(num, primes).size == 1
+
   def primeFactors(num: Long): Stream[Long] = primeFactors(num, basicPrimeSearchStream)
 
-  def primeFactors(num: Long, primes: Primes): Stream[Long] = primeFactors(num, primes.get)
+  def primeFactors(num: Long, primes: streams.Primes): Stream[Long] = primeFactors(num, primes.get)
 
   private def primeFactors(num: Long, searchStream: Stream[Long]): Stream[Long] = {
     num match {
