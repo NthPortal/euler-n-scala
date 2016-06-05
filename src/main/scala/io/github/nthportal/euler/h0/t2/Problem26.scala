@@ -23,7 +23,7 @@ object Problem26 extends ProjectEulerProblem {
                            divisor: Int,
                            index: Int,
                            currentSolution: StringBuilder,
-                           ops: mutable.HashMap[(Int, Int), Int]): (String, String) = {
+                           ops: mutable.Map[(Int, Int), Int]): (String, String) = {
     val op = (dividend, divisor)
 
     if (dividend == 0) {
