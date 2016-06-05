@@ -31,4 +31,7 @@ class P02xTests {
 
   @Test
   def problem28Test(): Unit = assertEquals(669171001, Problem28())
+
+  @Test
+  def problem29Test(): Unit = assertEquals(9183, Problem29())
 }
