@@ -1,6 +1,10 @@
 package io.github.nthportal.euler
 package h0.t1
 
+import io.github.nthportal.euler.util.maths
+import io.github.nthportal.euler.util.maths.streams
+import io.github.nthportal.euler.util.maths.streams.Naturals
+
 object Problem12 extends ProjectEulerProblem {
   override def apply(): Long = {
     val t = new TriangleNumbers()
@@ -10,18 +14,11 @@ object Problem12 extends ProjectEulerProblem {
       .get._1
   }
 
-  private def numDivisors(num: Long, naturals: Stream[Int]): Int = {
-    val half = naturals
-      .filter(num % _ == 0)
-      .takeWhile(i => i * i < num)
-      .toList
-      .size
-    val perfectSquare = if ({ val i = math.sqrt(num).toFloat; i * i == num }) 1 else 0
-    half * 2 + perfectSquare
-  }
+  private def numDivisors(num: Long, naturals: Naturals): Int = maths.divisors(num, naturals).length
 
   private class TriangleNumbers {
-    val naturals: Stream[Int] = Stream.from(1)
-    val triangleNumbers: Stream[Long] = naturals.map(i => naturals.take(i).map(_.toLong).sum)
+    val naturals = streams.naturals
+    val intNaturals: Stream[Int] = naturals.get.map(_.toInt)
+    val triangleNumbers: Stream[Long] = intNaturals.map(i => intNaturals.take(i).map(_.toLong).sum)
   }
 }

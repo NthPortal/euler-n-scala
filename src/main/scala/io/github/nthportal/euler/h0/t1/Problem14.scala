@@ -4,7 +4,7 @@ package h0.t1
 object Problem14 extends ProjectEulerProblem {
   override def apply(): Long = {
     (1 to 1000000)
-      .map(i => (i.toLong, collatzStream(i).toList.size))
+      .map(i => (i.toLong, collatzStream(i).length))
       .maxBy(_._2)._1
   }
 
