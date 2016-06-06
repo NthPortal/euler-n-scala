@@ -15,6 +15,22 @@ package object maths {
     }
   }
 
+  def pow(a: Long, b: Long): Long = powImpl(a, b)
+
+  def bigPow(a: Long, b: Long): BigInt = bigPowImpl(a, b)
+
+  @tailrec
+  private def powImpl(a: Long, b: Long, prevResult: Long = 1): Long = {
+    if (b == 0) prevResult
+    else powImpl(a, b - 1, prevResult * a)
+  }
+
+  @tailrec
+  private def bigPowImpl(a: Long, b: Long, prevResult: BigInt = 1): BigInt = {
+    if (b == 0) prevResult
+    else bigPowImpl(a, b - 1, prevResult * a)
+  }
+
   // Returns ordered list
   def divisors(num: Long, naturals: Naturals = streams.naturals): List[Long] = {
     val half = naturals.get
