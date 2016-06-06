@@ -1,7 +1,7 @@
 package io.github.nthportal.euler
 package h0.t2
 
-import scala.annotation.tailrec
+import io.github.nthportal.euler.util.maths
 
 object Problem29 extends ProjectEulerProblem {
   private val range = 2 to 100
@@ -10,14 +10,8 @@ object Problem29 extends ProjectEulerProblem {
     {
       for { a <- range
             b <- range
-      } yield pow(a, b)
+      } yield maths.bigPow(a, b)
     }.toSet
       .size
-  }
-
-  @tailrec
-  private def pow(a: Int, b: Int, prevResult: BigInt = 1): BigInt = b match {
-    case 0 => prevResult
-    case _ => pow(a, b - 1, prevResult * a)
   }
 }
