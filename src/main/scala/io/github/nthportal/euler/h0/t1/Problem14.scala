@@ -2,10 +2,13 @@ package io.github.nthportal.euler
 package h0.t1
 
 object Problem14 extends ProjectEulerProblem {
+  private val range = 1 to 1000000
+
   override def apply(): Long = {
-    (1 to 1000000)
-      .map(i => (i.toLong, collatzStream(i).length))
-      .maxBy(_._2)._1
+    range.toStream
+      .map(collatzStream(_).length)
+      .zip(range)
+      .maxBy(_._1)._2
   }
 
   private def collatzStream(num: Long): Stream[Long] = {

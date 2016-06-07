@@ -5,11 +5,14 @@ import scala.annotation.tailrec
 import scala.collection.mutable
 
 object Problem26 extends ProjectEulerProblem {
+  private val range = 1 until 1000
+
   override def apply(): Long = {
-    (1 until 1000)
-      .map(i => (i, longDivide(1, i)))
-      .maxBy(_._2.repeating.length)
-      ._1
+    range.toStream
+      .map(longDivide(1, _))
+      .zip(range)
+      .maxBy(_._1.repeating.length)
+      ._2
   }
 
   private def longDivide(dividend: Int, divisor: Int): DecimalNumber = {
