@@ -31,6 +31,10 @@ package object maths {
     else bigPowImpl(a, b - 1, prevResult * a)
   }
 
+  def fibonacciFrom(n1: Long, n2: Long): Stream[Long] = n1 #:: fibonacciFrom(n2, n1 + n2)
+
+  def bigFibonacciFrom(n1: BigInt, n2: BigInt): Stream[BigInt] = n1 #:: bigFibonacciFrom(n2, n1 + n2)
+
   // Returns ordered list
   def divisors(num: Long, naturals: Naturals = streams.naturals): List[Long] = {
     val half = naturals.get
