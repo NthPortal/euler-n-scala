@@ -12,14 +12,14 @@ object Problem23 extends ProjectEulerProblem {
 
     val abundantNumbers = range
       .map(i => {
-        (i, maths.divisors(i, naturals)
+        maths.divisors(i, naturals)
           .toStream
           .filterNot(_ == i)
           .sum
-          )
       })
-      .filter(t => t._1 < t._2)
-      .map(_._1)
+      .zip(range)
+      .filter(t => t._2 < t._1)
+      .map(_._2)
       .toSet
 
     range.filterNot(isSumOfTwoAbundantNumbers(_, abundantNumbers)).sum

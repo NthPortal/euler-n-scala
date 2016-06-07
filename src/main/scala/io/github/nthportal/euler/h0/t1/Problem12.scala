@@ -9,9 +9,10 @@ object Problem12 extends ProjectEulerProblem {
   override def apply(): Long = {
     val t = new TriangleNumbers()
     t.triangleNumbers
-      .map(i => (i, numDivisors(i, t.naturals)))
-      .find(_._2 > 500)
-      .get._1
+      .map(numDivisors(_, t.naturals))
+      .zip(t.triangleNumbers)
+      .find(_._1 > 500)
+      .get._2
   }
 
   private def numDivisors(num: Long, naturals: Naturals): Int = maths.divisors(num, naturals).length

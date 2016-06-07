@@ -1,13 +1,13 @@
 package io.github.nthportal.euler
 package h0.t0
 
+import io.github.nthportal.euler.util.maths.streams
+
 object Problem2 extends ProjectEulerProblem {
   override def apply(): Long = {
-    fibonacciFrom(1, 1)
+    streams.fibonacci.get
       .takeWhile(_ < 4000000)
       .filter(_ % 2 == 0)
       .sum
   }
-
-  private def fibonacciFrom(n1: Int, n2: Int): Stream[Int] = n1 #:: fibonacciFrom(n2, n1 + n2)
 }
