@@ -88,4 +88,14 @@ package object maths {
 
     half ::: sqrtList ::: half.reverse.map(num / _)
   }
+
+  /* digits* */
+
+  def digitsOf(n: Int): List[Int] = carryDigits(n, Nil)
+
+  @tailrec
+  private def carryDigits (n: Int, carry: List[Int]): List [Int] = {
+    if (n < 10) n :: carry
+    else carryDigits (n/10, (n % 10) :: carry)
+  }
 }
