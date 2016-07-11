@@ -91,11 +91,13 @@ package object maths {
 
   /* digits* */
 
-  def digitsOf(n: Int): List[Int] = carryDigits(n, Nil)
+  def digitsOf(n: Long): List[Long] = carryDigits(n, Nil)
 
   @tailrec
-  private def carryDigits (n: Int, carry: List[Int]): List [Int] = {
+  private def carryDigits (n: Long, carry: List[Long]): List [Long] = {
     if (n < 10) n :: carry
     else carryDigits (n/10, (n % 10) :: carry)
   }
+
+  def fromDigits(digits: Seq[Long]): Long = digits.foldLeft(0L){ _ * 10 + _ }
 }
