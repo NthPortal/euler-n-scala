@@ -14,11 +14,12 @@ object NumericFormat {
   }
 
   /* digits* */
+  def digitsOf(n: Int): List[Long] = digitsOf(n.toLong)
 
   def digitsOf(n: Long): List[Long] = carryDigits(n, Nil)
 
   @tailrec
-  private def carryDigits (n: Long, carry: List[Long]): List [Long] = {
+  private def carryDigits (n: Long, carry: List[Long]): List[Long] = {
     if (n < 10) n :: carry
     else carryDigits (n/10, (n % 10) :: carry)
   }
