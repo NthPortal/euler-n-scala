@@ -49,10 +49,21 @@ package object maths {
   }
 
   /* integer exponents */
+  @inline
+  private def exponentChecks(a: Long, b: Long): Unit = {
+    require(b >= 0, "Integral exponentiation not supported for negative values")
+    if (a == 0 && b == 0) throw new ArithmeticException("0 power 0 not defined")
+  }
 
-  def pow(a: Long, b: Long): Long = powImpl(a, b)
+  def pow(a: Long, b: Long): Long = {
+    exponentChecks(a, b)
+    powImpl(a, b)
+  }
 
-  def bigPow(a: Long, b: Long): BigInt = bigPowImpl(a, b)
+  def bigPow(a: Long, b: Long): BigInt = {
+    exponentChecks(a, b)
+    bigPowImpl(a, b)
+  }
 
   @tailrec
   private def powImpl(a: Long, b: Long, prevResult: Long = 1): Long = {
