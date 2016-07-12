@@ -3,8 +3,9 @@ package io.github.nthportal.euler.h0
 import io.github.nthportal.euler.h0.t0._
 import org.junit.Assert._
 import org.junit.Test
+import org.scalatest.junit.JUnitSuite
 
-class P00xTests {
+class P00xTests extends JUnitSuite {
   @Test
   def Problem1Test(): Unit = assertEquals(233168, Problem1())
 
