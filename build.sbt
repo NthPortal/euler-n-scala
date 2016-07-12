@@ -5,7 +5,7 @@ version := "1.0.0-SNAPSHOT"
 isSnapshot := true
 
 scalaVersion := "2.11.8"
-scalacOptions += "-target:jvm-1.8"
+scalacOptions += "-target:jvm-1.7"
 
 libraryDependencies += "org.jgrapht" % "jgrapht-core" % "0.9.2"
 
