@@ -37,8 +37,8 @@ object Fraction {
     new Fraction(n / gcf, d / gcf) {}
   }
 
+  private def gcd(a: Int, b: Int): Int = if (a > b) gcdRec(a, b) else gcdRec(b, a)
+
   @tailrec
-  private def gcd(a: Int, b: Int): Int = {
-    if (b == 0) a else gcd(b, a % b)
-  }
+  private def gcdRec(a: Int, b: Int): Int = if (b == 0) a else gcdRec(b, a % b)
 }

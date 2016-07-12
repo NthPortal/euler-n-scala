@@ -6,7 +6,6 @@ import io.github.nthportal.euler.util.maths.{NumericFormat, Primes, streams}
 object Problem35 extends ProjectEulerProblem {
   override def apply(): Long = {
     val primes = streams.primes
-
     primes.get
       .takeWhile(_ < 1000000)
       .count(i => rotations(i).forall(Primes.isPrime(_, primes)))

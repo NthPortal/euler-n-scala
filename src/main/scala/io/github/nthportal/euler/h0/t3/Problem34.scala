@@ -15,15 +15,10 @@ object Problem34 extends ProjectEulerProblem {
 
   private def findLimit(): Int = {
     val nineFactorial = maths.factorial(9).toInt
-
-    var digits = 1
-    var result = nineFactorial
-
-    while (result.toString.length > digits) {
-      digits += 1
-      result = nineFactorial * digits
-    }
-
-    digits * nineFactorial
+    Stream.iterate(nineFactorial) { _ + nineFactorial }
+      .zip(Stream.from(1))
+      .takeWhile(t => t._1.toString.length > t._2)
+      .last
+      ._1
   }
 }
