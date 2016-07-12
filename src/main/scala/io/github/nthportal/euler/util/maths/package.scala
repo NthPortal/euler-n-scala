@@ -5,6 +5,8 @@ import io.github.nthportal.euler.util.maths.streams.Naturals
 import scala.annotation.tailrec
 
 package object maths {
+  /* choose and factorial */
+
   def choose(n: Long, k: Long): BigInt = partialFactorial(n, math.max(k, n - k)) / factorial(math.min(k, n - k))
 
   def factorial(n: Long): BigInt = {
@@ -14,6 +16,39 @@ package object maths {
       case _ => partialFactorial(n, 1)
     }
   }
+
+  @tailrec
+  private def partialFactorial(n: Long, stop: Long, prevResult: BigInt = 1): BigInt = {
+    if (n > stop) partialFactorial(n - 1, stop, prevResult * n)
+    else prevResult
+  }
+
+  /* list permutations */
+
+  def permutationsOf(numbers: List[Int]): Stream[List[Int]] = permutationsFrom(numbers.sorted)
+
+  private def permutationsFrom(numbers: List[Int]): Stream[List[Int]] = {
+    if (numbers.isEmpty) Stream.empty
+    else numbers #:: permutationsFrom(permute(numbers, numbers.length - 2))
+  }
+
+  @tailrec
+  private def permute(numbers: List[Int], index: Int)(implicit swapWithIndex: Int = numbers.length - 1): List[Int] = {
+    if (numbers(index) < numbers(swapWithIndex)) {
+      numbers.slice(0, index) :::
+        numbers(swapWithIndex) ::
+        numbers.slice(swapWithIndex + 1, numbers.length).reverse :::
+        numbers(index) ::
+        numbers.slice(index + 1, swapWithIndex).reverse
+    } else if (swapWithIndex == index + 1) {
+      if (index == 0) List.empty
+      else permute(numbers, index - 1)(numbers.length - 1)
+    } else {
+      permute(numbers, index)(swapWithIndex - 1)
+    }
+  }
+
+  /* integer exponents */
 
   def pow(a: Long, b: Long): Long = powImpl(a, b)
 
@@ -31,9 +66,13 @@ package object maths {
     else bigPowImpl(a, b - 1, prevResult * a)
   }
 
+  /* fibonacci */
+
   def fibonacciFrom(n1: Long, n2: Long): Stream[Long] = n1 #:: fibonacciFrom(n2, n1 + n2)
 
   def bigFibonacciFrom(n1: BigInt, n2: BigInt): Stream[BigInt] = n1 #:: bigFibonacciFrom(n2, n1 + n2)
+
+  /* divisors */
 
   // Returns ordered list
   def divisors(num: Long, naturals: Naturals = streams.naturals): List[Long] = {
@@ -48,11 +87,5 @@ package object maths {
     }
 
     half ::: sqrtList ::: half.reverse.map(num / _)
-  }
-
-  @tailrec
-  private def partialFactorial(n: Long, stop: Long, prevResult: BigInt = 1): BigInt = {
-    if (n > stop) partialFactorial(n - 1, stop, prevResult * n)
-    else prevResult
   }
 }

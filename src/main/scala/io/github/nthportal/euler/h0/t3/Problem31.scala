@@ -9,13 +9,8 @@ object Problem31 extends ProjectEulerProblem {
       .filterNot(_ eq EnglishCurrency.OnePence)
       .foldLeft(List(200))((penceRemaining, coin) => {
         penceRemaining.flatMap(p => {
-          if (p == 0) {
-            zeroList
-          } else {
-            (0 to (p / coin.pence))
-              .toList
-              .map(i => p - (i * coin.pence))
-          }
+          if (p == 0) zeroList
+          else p to (p % coin.pence) by (-coin.pence)
         })
       })
       .length
