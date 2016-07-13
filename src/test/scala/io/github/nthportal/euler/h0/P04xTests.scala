@@ -7,4 +7,7 @@ import org.scalatest.junit.JUnitSuite
 class P04xTests extends JUnitSuite {
   @Test
   def problem40Test(): Unit = assert(Problem40() == 210)
+
+  @Test
+  def problem41Test(): Unit = assert(Problem41() == 7652413)
 }

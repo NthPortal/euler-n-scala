@@ -26,6 +26,9 @@ object NumericFormat {
     str == str.reverse
   }
 
+  @inline
+  def isPandigital(num: Long): Boolean = isPandigital(num.toString)
+
   def isPandigital(num: String): Boolean = (1 to num.length).map(_.toString).forall(_ in num)
 
   /* digits */

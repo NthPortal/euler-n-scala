@@ -23,22 +23,23 @@ package object maths {
     else prevResult
   }
 
-  /* list permutations */
+  /* seq permutations */
 
-  def permutationsOf(numbers: List[Int]): Stream[List[Int]] = permutationsFrom(numbers.sorted)
+  def permutationsOf(numbers: Seq[Int]): Stream[Seq[Int]] = permutationsFrom(numbers.sorted)
 
-  private def permutationsFrom(numbers: List[Int]): Stream[List[Int]] = {
+  private def permutationsFrom(numbers: Seq[Int]): Stream[Seq[Int]] = {
     if (numbers.isEmpty) Stream.empty
+    else if (numbers.length == 1) Stream(numbers)
     else numbers #:: permutationsFrom(permute(numbers, numbers.length - 2))
   }
 
   @tailrec
-  private def permute(numbers: List[Int], index: Int)(implicit swapWithIndex: Int = numbers.length - 1): List[Int] = {
+  private def permute(numbers: Seq[Int], index: Int)(implicit swapWithIndex: Int = numbers.length - 1): Seq[Int] = {
     if (numbers(index) < numbers(swapWithIndex)) {
-      numbers.slice(0, index) :::
-        numbers(swapWithIndex) ::
-        numbers.slice(swapWithIndex + 1, numbers.length).reverse :::
-        numbers(index) ::
+      numbers.slice(0, index) ++:
+        numbers(swapWithIndex) +:
+        numbers.slice(swapWithIndex + 1, numbers.length).reverse ++:
+        numbers(index) +:
         numbers.slice(index + 1, swapWithIndex).reverse
     } else if (swapWithIndex == index + 1) {
       if (index == 0) List.empty

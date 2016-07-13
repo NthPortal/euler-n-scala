@@ -9,18 +9,22 @@ import scala.collection.SeqLike
   */
 package object euler {
   /* Exponents */
+  // Value classes cannot be made members of traits, so these cannot
+  // be moved to util.maths
 
-  implicit final class LongPow(private val a: Long) extends AnyVal {
+  implicit final class CustomRichLong(private val a: Long) extends AnyVal {
     def **(b: Long) = maths.pow(a, b)
     def **(b: Int) = maths.pow(a, b)
+    def isEven: Boolean = a % 2 == 0
   }
 
-  implicit final class IntPow(private val a: Int) extends AnyVal {
+  implicit final class CustomRichInt(private val a: Int) extends AnyVal {
     def **(b: Long) = maths.pow(a, b)
     def **(b: Int) = maths.pow(a, b)
+    def isEven: Boolean = a % 2 == 0
   }
 
-  implicit final class DoublePow(private val a: Double) extends AnyVal {
+  implicit final class CustomRichDouble(private val a: Double) extends AnyVal {
     def **(b: Double) = math.pow(a, b)
   }
 
