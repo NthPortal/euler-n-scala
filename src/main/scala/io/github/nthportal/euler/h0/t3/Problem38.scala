@@ -1,20 +1,19 @@
 package io.github.nthportal.euler
 package h0.t3
 
-import io.github.nthportal.euler.util.maths.streams
+import io.github.nthportal.euler.util.maths.{NumericFormat, streams}
 
 import scala.annotation.tailrec
 
 object Problem38 extends ProjectEulerProblem {
   private val maxLength = 9
-  private val digits = '1' to '9'
 
   override def apply(): Long = {
     streams.naturals.get
       .takeWhile(_ < 10 ** 5)
       .map(concatenatedProduct)
       .filter(_.length == maxLength)
-      .filter(isPandigital)
+      .filter(NumericFormat.isPandigital)
       .map(_.toLong)
       .max
   }
@@ -27,6 +26,4 @@ object Problem38 extends ProjectEulerProblem {
     if (nextPart.length + beginning.length > maxLength) beginning
     else remainingConcatenatedProduct(base, n + 1, beginning + nextPart)
   }
-
-  private def isPandigital(num: String): Boolean = digits.forall(num.contains(_))
 }

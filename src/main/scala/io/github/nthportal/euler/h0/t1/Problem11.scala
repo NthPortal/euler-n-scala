@@ -1,7 +1,7 @@
 package io.github.nthportal.euler
 package h0.t1
 
-import io.github.nthportal.euler.util.Parse
+import io.github.nthportal.euler.util.maths.NumericFormat
 
 import scala.util.{Success, Try}
 
@@ -33,7 +33,7 @@ object Problem11 extends ProjectEulerProblem {
   private val numbers =
     numStr.lines
       .map(_.split(' ').toList)
-      .map(_.map(Parse.twoDigitStringAsNum))
+      .map(_.map(NumericFormat.twoDigitStringAsNum))
       .toList
 
   override def apply(): Long = {

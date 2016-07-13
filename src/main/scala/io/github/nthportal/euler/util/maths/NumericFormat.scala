@@ -1,8 +1,21 @@
-package io.github.nthportal.euler.util.maths
+package io.github.nthportal.euler
+package util.maths
 
 import scala.annotation.tailrec
 
 object NumericFormat {
+  def twoDigitStringAsNum(s: String): Int = {
+    require(s.length == 2, "Expected string of length 2 - actual length: " + s.length)
+    twoDigitStringAsNumImpl(s)
+  }
+
+  @tailrec
+  private def twoDigitStringAsNumImpl(s: String): Int = {
+    if (s.startsWith("0")) twoDigitStringAsNumImpl(s.substring(1))
+    else if (s.isEmpty) 0
+    else s.toInt
+  }
+
   def isPalindrome(num: Long): Boolean = {
     val str = num.toString
     str == str.reverse
@@ -13,7 +26,10 @@ object NumericFormat {
     str == str.reverse
   }
 
-  /* digits* */
+  def isPandigital(num: String): Boolean = (1 to num.length).map(_.toString).forall(_ in num)
+
+  /* digits */
+
   def digitsOf(n: Int): List[Long] = digitsOf(n.toLong)
 
   def digitsOf(n: Long): List[Long] = carryDigits(n, Nil)

@@ -2,7 +2,7 @@ package io.github.nthportal.euler
 package h0.t1
 
 import io.github.nthportal.euler.util.TriangleGraph
-import io.github.nthportal.euler.util.Parse
+import io.github.nthportal.euler.util.maths.NumericFormat
 import org.jgrapht.alg.AStarShortestPath
 
 import scala.collection.JavaConversions
@@ -29,7 +29,7 @@ object Problem18 extends ProjectEulerProblem {
     triangleStr.lines
       .map(_.split(' '))
       .map(_.toStream)
-      .map(_.map(Parse.twoDigitStringAsNum))
+      .map(_.map(NumericFormat.twoDigitStringAsNum))
       .map(_.toList)
       .toList
 
