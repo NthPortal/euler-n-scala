@@ -2,7 +2,7 @@ package io.github.nthportal
 
 import io.github.nthportal.euler.util.maths
 
-import scala.collection.SeqLike
+import scala.collection.{GenSetLike, SeqLike}
 
 /**
   * Custom Predef
@@ -38,5 +38,10 @@ package object euler {
   implicit class ObjInSeqLike[A, A1 >: A, Repr](obj: A1) {
     def in(seqLike: SeqLike[A, Repr]): Boolean = seqLike contains obj
     def notIn(seqLike: SeqLike[A, Repr]): Boolean = !in(seqLike)
+  }
+
+  implicit class ObjInGenSetLike[A, Repr](obj: A) {
+    def in(seqLike: GenSetLike[A, Repr]): Boolean = seqLike contains obj
+    def notIn(seqLike: GenSetLike[A, Repr]): Boolean = !in(seqLike)
   }
 }
