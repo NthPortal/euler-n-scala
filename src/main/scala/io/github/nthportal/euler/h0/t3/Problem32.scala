@@ -5,15 +5,15 @@ import io.github.nthportal.euler.util.maths
 
 object Problem32 extends ProjectEulerProblem {
   override def apply(): Long = {
-    maths.permutationsOf((1 to 9).toList)
+    maths.permutationsOf(1 to 9)
       .flatMap(combinations)
-      .filter(t => t._1 * t._2 == t._3)
+      .filter { case (a, b, product) => a * b == product }
       .map(_._3)
       .toSet
       .sum
   }
 
-  private def combinations(list: List[Int]): IndexedSeq[(Int, Int, Int)] = {
+  private def combinations(list: Seq[Int]): IndexedSeq[(Int, Int, Int)] = {
     val product = intFromList(list.slice(5, list.length))
     for {i <- 1 to 4
          multiplicand = intFromList(list.slice(0, i))
@@ -21,5 +21,5 @@ object Problem32 extends ProjectEulerProblem {
     } yield (multiplicand, multiplier, product)
   }
 
-  private def intFromList(list: List[Int]): Int = list.fold(0) { _ * 10 + _ }
+  private def intFromList(list: Seq[Int]): Int = list.fold(0) { _ * 10 + _ }
 }
