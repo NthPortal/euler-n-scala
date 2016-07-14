@@ -31,8 +31,8 @@ object Problem26 extends ProjectEulerProblem {
 
     if (dividend == 0) {
       (currentSolution.toString(), "")
-    } else if (ops contains op) {
-      val repeatIndex = ops.get(op).get
+    } else if (op in ops) {
+      val repeatIndex = ops(op)
       val solution = currentSolution.toString()
       (solution.substring(0, repeatIndex), solution.substring(repeatIndex))
     } else {
