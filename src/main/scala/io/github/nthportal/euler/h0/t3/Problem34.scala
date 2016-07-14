@@ -17,7 +17,7 @@ object Problem34 extends ProjectEulerProblem {
     val nineFactorial = maths.factorial(9).toInt
     Stream.iterate(nineFactorial) { _ + nineFactorial }
       .zip(Stream.from(1))
-      .takeWhile(t => t._1.toString.length > t._2)
+      .takeWhile { case (product, count) => product.toString.length > count }
       .last
       ._1
   }

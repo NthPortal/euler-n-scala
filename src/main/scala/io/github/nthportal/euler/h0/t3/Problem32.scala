@@ -7,7 +7,7 @@ object Problem32 extends ProjectEulerProblem {
   override def apply(): Long = {
     maths.permutationsOf(1 to 9)
       .flatMap(combinations)
-      .filter(t => t._1 * t._2 == t._3)
+      .filter { case (a, b, product) => a * b == product }
       .map(_._3)
       .toSet
       .sum

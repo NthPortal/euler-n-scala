@@ -18,7 +18,7 @@ object Problem23 extends ProjectEulerProblem {
           .sum
       })
       .zip(range)
-      .filter(t => t._2 < t._1)
+      .filter { case (sumOfDivisors, num) => num < sumOfDivisors }
       .map(_._2)
       .toSet
 

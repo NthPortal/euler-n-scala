@@ -56,7 +56,7 @@ object Problem11 extends ProjectEulerProblem {
   private def productFrom(i: Int, j: Int, f: (((Int, Int)) => (Int, Int))): Option[Long] = {
     Stream.iterate((i, j))(f)
       .take(numAdjacent)
-      .map(t => Try(numbers(t._1)(t._2).toLong))
+      .map { case (a, b) => Try(numbers(a)(b).toLong) }
       .fold[Try[Long]](Success(1))((t1, t2) => for { l1 <- t1; l2 <- t2 } yield l1 * l2)
       .toOption
   }
