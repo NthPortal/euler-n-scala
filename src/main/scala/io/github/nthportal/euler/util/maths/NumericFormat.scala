@@ -43,5 +43,7 @@ object NumericFormat {
     else carryDigits (n/10, (n % 10) :: carry)
   }
 
-  def fromDigits(digits: Seq[Long]): Long = digits.foldLeft(0L){ _ * 10 + _ }
+  def fromDigits(digits: Seq[Int]): Long = digits.foldLeft(0L){ _ * 10 + _ }
+
+  def fromLongDigits(digits: Seq[Long]): Long = digits.foldLeft(0L){ _ * 10 + _ }
 }

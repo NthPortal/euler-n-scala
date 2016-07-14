@@ -15,13 +15,17 @@ package object euler {
   implicit final class CustomRichLong(private val a: Long) extends AnyVal {
     def **(b: Long) = maths.pow(a, b)
     def **(b: Int) = maths.pow(a, b)
-    def isEven: Boolean = a % 2 == 0
+    def divides(b: Long): Boolean = b % a == 0
+    def divides(b: Int): Boolean = b % a == 0
+    def isEven: Boolean = 2 divides a
   }
 
   implicit final class CustomRichInt(private val a: Int) extends AnyVal {
     def **(b: Long) = maths.pow(a, b)
     def **(b: Int) = maths.pow(a, b)
-    def isEven: Boolean = a % 2 == 0
+    def divides(b: Long): Boolean = b % a == 0
+    def divides(b: Int): Boolean = b % a == 0
+    def isEven: Boolean = 2 divides a
   }
 
   implicit final class CustomRichDouble(private val a: Double) extends AnyVal {

@@ -15,7 +15,6 @@ object Problem41 extends ProjectEulerProblem {
         if !digitSetNonPrime(digits)
         num <- maths.permutationsOf(1 to max)
           .filterNot(permutationNonPrime)
-          .map(seq => seq.map(_.toLong))
           .map(NumericFormat.fromDigits)
         if Primes.isPrime(num, primes)
       } yield num
