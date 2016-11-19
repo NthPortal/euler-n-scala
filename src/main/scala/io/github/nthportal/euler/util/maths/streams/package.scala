@@ -12,4 +12,6 @@ package object streams {
   def triangleNumbers = new TriangleNumbers
 
   def pentagonalNumbers = new PentagonalNumbers
+
+  def hexagonalNumbers = new HexagonalNumbers
 }
