@@ -3,6 +3,7 @@ package com.nthportal.euler
 import com.nthportal.euler.maths.streams.Naturals
 
 import scala.annotation.tailrec
+import scala.math.Ordering.Implicits._
 
 package object maths {
   /* choose and factorial */
@@ -27,16 +28,16 @@ package object maths {
 
   /* seq permutations */
 
-  def permutationsOf(numbers: Seq[Int]): Stream[Seq[Int]] = permutationsFrom(numbers.sorted)
+  def permutationsOf[T : Ordering](numbers: Seq[T]): Stream[Seq[T]] = permutationsFrom(numbers.sorted)
 
-  private def permutationsFrom(numbers: Seq[Int]): Stream[Seq[Int]] = {
+  private def permutationsFrom[T : Ordering](numbers: Seq[T]): Stream[Seq[T]] = {
     if (numbers.isEmpty) Stream.empty
     else if (numbers.length == 1) Stream(numbers)
     else numbers #:: permutationsFrom(permute(numbers, numbers.length - 2)())
   }
 
   @tailrec
-  private def permute(numbers: Seq[Int], index: Int)(swapWithIndex: Int = numbers.length - 1): Seq[Int] = {
+  private def permute[T : Ordering](numbers: Seq[T], index: Int)(swapWithIndex: Int = numbers.length - 1): Seq[T] = {
     if (numbers(index) < numbers(swapWithIndex)) {
       numbers.slice(0, index) ++:
         numbers(swapWithIndex) +:
