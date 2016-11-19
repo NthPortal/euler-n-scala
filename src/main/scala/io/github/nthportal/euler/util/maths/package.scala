@@ -100,4 +100,12 @@ package object maths {
 
     half ::: sqrtList ::: half.reverse.map(num / _)
   }
+
+  /* Distance between values */
+
+  def dist(a: Long, b: Long): Long = math.abs(a - b)
+
+  def dist(a: Int, b: Int): Int = math.abs(a - b)
+
+  def dist(a: Double, b: Double): Double = math.abs(a - b)
 }

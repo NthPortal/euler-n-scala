@@ -8,4 +8,8 @@ package object streams {
   def fibonacci = new Fibonacci
 
   def bigFibonacci = new BigFibonacci
+
+  def triangleNumbers = new TriangleNumbers
+
+  def pentagonalNumbers = new PentagonalNumbers
 }
