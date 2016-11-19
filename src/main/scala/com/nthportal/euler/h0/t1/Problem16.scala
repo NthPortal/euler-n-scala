@@ -3,10 +3,9 @@ package h0.t1
 
 object Problem16 extends ProjectEulerProblem {
   override def apply(): Long = {
-    (BigInt(1) << 1000)
-      .toString
+    (BigInt(1) << 1000).digits
       .toStream
-      .map(_.asDigit.toLong)
+      .map(_.toLong)
       .sum
   }
 }

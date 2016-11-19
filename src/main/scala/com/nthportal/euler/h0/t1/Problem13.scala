@@ -1,6 +1,8 @@
 package com.nthportal.euler
 package h0.t1
 
+import com.nthportal.euler.maths.NumericFormat
+
 object Problem13 extends ProjectEulerProblem {
   private val numStr =
     "37107287533902102798797998220837590246510135740250\n46376937677490009712648124896970078050417018260538" +
@@ -54,13 +56,10 @@ object Problem13 extends ProjectEulerProblem {
       "\n77158542502016545090413245809786882778948721859617\n72107838435069186155435662884062257473692284509516" +
       "\n20849603980134001723930671666823555245252804609722\n53503534226472524250874054075591789781264330331690"
 
-  private val numbers = numStr.lines.map(BigInt(_)).toList
+  private val numbers = numStr.lines
+    .toStream
+    .map(BigInt(_))
+    .toList
 
-  override def apply(): Long = {
-    numbers
-      .sum
-      .toString
-      .substring(0, 10)
-      .toLong
-  }
+  override def apply(): Long = NumericFormat.fromDigits(numbers.sum.digits.take(10))
 }

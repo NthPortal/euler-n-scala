@@ -5,9 +5,9 @@ import com.nthportal.euler.maths.streams
 
 object Problem2 extends ProjectEulerProblem {
   override def apply(): Long = {
-    streams.fibonacci.get
+    streams.fibonacci()
       .takeWhile(_ < 4000000)
-      .filter(_ % 2 == 0)
+      .filter(2 divides _)
       .sum
   }
 }

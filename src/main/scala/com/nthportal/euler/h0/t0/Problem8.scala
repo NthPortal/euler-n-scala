@@ -15,12 +15,12 @@ object Problem8 extends ProjectEulerProblem {
       "07198403850962455444362981230987879927244284909188" + "84580156166097919133875499200524063689912560717606" +
       "05886116467109405077541002256983155200055935729725" + "71636269561882670428252483600823257530420752963450"
 
-  override def apply(): Long = streamProducts(numStr.toStream).max
+  override def apply(): Long = streamProducts(numStr.toStream.map(_.asDigit.toLong)).max
 
-  private def streamProducts(chars: Stream[Char]): Stream[Long] = {
-    chars.take(productDigits) match {
-      case s if s.size < productDigits => Stream.empty
-      case s => s.map(_.asDigit.toLong).product #:: streamProducts(chars.drop(1))
+  private def streamProducts(digits: Stream[Long]): Stream[Long] = {
+    digits.take(productDigits) match {
+      case seq if seq.size < productDigits => Stream.empty
+      case seq => seq.product #:: streamProducts(digits.tail)
     }
   }
 }

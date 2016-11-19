@@ -1,7 +1,6 @@
 package com.nthportal.euler
 package h0.t1
 
-import com.nthportal.euler.maths
 import com.nthportal.euler.maths.streams
 import com.nthportal.euler.maths.streams.Naturals
 

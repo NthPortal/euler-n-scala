@@ -31,33 +31,30 @@ object Problem11 extends ProjectEulerProblem {
       "01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"
 
   private val numbers =
-    numStr.lines
+    numStr.lines.toStream
       .map(_.split(' ').toList)
       .map(_.map(NumericFormat.twoDigitStringAsNum))
       .toList
 
   override def apply(): Long = {
-    {
-      for { i <- numbers.indices
-            j <- numbers(i).indices
-      } yield productsAt(i, j)
-    }.flatten.max
-  }
+    for {
+      i <- numbers.indices
+      j <- numbers(i).indices
+    } yield productsAt(i, j)
+  }.flatten.max
 
-  private def productsAt(i: Int, j: Int): List[Long] = {
-    List(
-      productFrom(i, j, (t: (Int, Int)) => (t._1, t._2 + 1)),       // Horizontal
-      productFrom(i, j, (t: (Int, Int)) => (t._1 + 1, t._2)),       // Vertical
-      productFrom(i, j, (t: (Int, Int)) => (t._1 - 1, t._2 + 1)),   // Diagonal up
-      productFrom(i, j, (t: (Int, Int)) => (t._1 + 1, t._2 + 1))    // Diagonal down
-    ).flatten
-  }
+  private def productsAt(i: Int, j: Int): List[Long] = List(
+    productFrom(i, j, (t: (Int, Int)) => (t._1, t._2 + 1)),       // Horizontal
+    productFrom(i, j, (t: (Int, Int)) => (t._1 + 1, t._2)),       // Vertical
+    productFrom(i, j, (t: (Int, Int)) => (t._1 - 1, t._2 + 1)),   // Diagonal up
+    productFrom(i, j, (t: (Int, Int)) => (t._1 + 1, t._2 + 1))    // Diagonal down
+  ).flatten
 
   private def productFrom(i: Int, j: Int, f: (((Int, Int)) => (Int, Int))): Option[Long] = {
     Stream.iterate((i, j))(f)
       .take(numAdjacent)
       .map { case (a, b) => Try(numbers(a)(b).toLong) }
-      .fold[Try[Long]](Success(1))((t1, t2) => for { l1 <- t1; l2 <- t2 } yield l1 * l2)
+      .fold[Try[Long]](Success(1))((t1, t2) => for (l1 <- t1; l2 <- t2) yield l1 * l2)
       .toOption
   }
 }

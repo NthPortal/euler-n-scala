@@ -1,7 +1,6 @@
 package com.nthportal.euler
 package h0.t2
 
-import com.nthportal.euler.maths
 import com.nthportal.euler.maths.streams
 
 object Problem23 extends ProjectEulerProblem {
@@ -14,7 +13,7 @@ object Problem23 extends ProjectEulerProblem {
       .map(i => {
         maths.divisors(i, naturals)
           .toStream
-          .filterNot(_ == i)
+          .filter(_ != i)
           .sum
       })
       .zip(range)
@@ -22,7 +21,7 @@ object Problem23 extends ProjectEulerProblem {
       .map(_._2)
       .toSet
 
-    range.filterNot(isSumOfTwoAbundantNumbers(_, abundantNumbers)).sum
+    range.filter(!isSumOfTwoAbundantNumbers(_, abundantNumbers)).sum
   }
 
   private def isSumOfTwoAbundantNumbers(num: Int, abundantNumbers: Set[Int]): Boolean = {

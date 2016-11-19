@@ -1,6 +1,8 @@
 package com.nthportal.euler
 package h0.t1
 
+import com.nthportal.euler.maths.NumericFormat
+
 object Problem17 extends ProjectEulerProblem {
   private val numbers = Map(
     1 -> "one", 2 -> "two", 3 -> "three", 4 -> "four", 5 -> "five", 6 -> "six",
@@ -14,44 +16,44 @@ object Problem17 extends ProjectEulerProblem {
     6 -> "sixty", 7 -> "seventy", 8 -> "eighty", 9 -> "ninety"
   )
 
+  private val twoZeros = List(0, 0)
+
   override def apply(): Long = {
     (1 to 1000).toStream
-      .map(_.toString)
+      .map(_.digits)
       .map(numAsStr)
       .flatMap(_.toStream)
-      .filterNot(_ == ' ')
-      .filterNot(_ == '-')
-      .length
+      .count(c => c != ' ' && c != '-')
   }
 
   /**
     *  Only works for numbers up to 1000
     *  Really ugly
     */
-  private def numAsStr(num: String): String = {
-    num.length match {
+  private def numAsStr(digits: Seq[Int]): String = {
+    digits.length match {
       case 4 => "one thousand"
-      case 3 => threeDigitsAsStr(num)
-      case 2 => twoDigitsAsStr(num)
-      case 1 => numbers.get(firstDigit(num)).get
+      case 3 => threeDigitsAsStr(digits)
+      case 2 => twoDigitsAsStr(digits)
+      case 1 => numbers(firstDigit(digits))
     }
   }
 
-  private def firstDigit(num: String): Int = num.charAt(0).asDigit
+  private def firstDigit(digits: Seq[Int]): Int = digits.head
 
-  private def threeDigitsAsStr(num: String): String = {
-    numbers.get(firstDigit(num)).get + " hundred" +  {
-      if (num.endsWith("00")) ""
+  private def threeDigitsAsStr(digits: Seq[Int]): String = {
+    numbers(firstDigit(digits)) + " hundred" +  {
+      if (digits.takeRight(2) == twoZeros) ""
       else " and " + {
-        if (num.charAt(1) == '0') numAsStr(num.substring(2))
-        else numAsStr(num.substring(1))
+        if (digits(1) == 0) numAsStr(digits.drop(2))
+        else numAsStr(digits.tail)
       }
     }
   }
 
-  private def twoDigitsAsStr(num: String): String = {
-    if (num.startsWith("1")) numbers.get(num.toInt).get
-    else if (num.endsWith("0")) tens.get(firstDigit(num)).get
-    else tens.get(firstDigit(num)).get + "-" + numAsStr(num.substring(1))
+  private def twoDigitsAsStr(digits: Seq[Int]): String = {
+    if (digits.head == 1) numbers(NumericFormat.fromDigits(digits))
+    else if (digits.last == 0) tens(firstDigit(digits))
+    else tens(firstDigit(digits)) + "-" + numAsStr(digits.tail)
   }
 }

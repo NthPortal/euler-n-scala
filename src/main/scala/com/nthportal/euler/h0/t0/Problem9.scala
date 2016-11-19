@@ -6,12 +6,11 @@ object Problem9 extends ProjectEulerProblem {
   private val capAB = (goal / 2) - 1
 
   override def apply(): Long = {
-    {
-      for {a <- 1 to capAB
-           b <- 1 to capAB
-           c = goal - a - b
-           if (math.pow(a, 2) + math.pow(b, 2)) == math.pow(c, 2)
-      } yield a * b * c
-    }.head
-  }
+    for {
+      a <- 1 to capAB
+      b <- 1 to capAB
+      c = goal - a - b
+      if a * a + b * b == c * c
+    } yield a * b * c
+  }.head
 }

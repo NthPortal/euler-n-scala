@@ -11,7 +11,7 @@ object Problem5 extends ProjectEulerProblem {
       .flatMap(_.toSeq)
       .groupBy(_._1)
       .mapValues(_.map(_._2).max)
-      .map(kv => math.pow(kv._1, kv._2).toLong)
+      .map({ case (k, v) => k ** v })
       .product
   }
 }
