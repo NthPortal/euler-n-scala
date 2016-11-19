@@ -17,6 +17,7 @@ package object euler {
     def **(b: Int): Long = maths.pow(a, b)
     def **(b: Long): Long = maths.pow(a, b)
     def ***(b: Long): BigInt = maths.bigPow(a, b)
+    def ^^(b: Long): BigInt = maths.knuthUpArrow2(a, b)
     def divides(b: Int): Boolean = b % a == 0
     def divides(b: Long): Boolean = b % a == 0
     def divides(b: BigInt): Boolean = b % a == 0
@@ -30,6 +31,7 @@ package object euler {
     def **(b: Int): Long = maths.pow(a, b)
     def **(b: Long): Long = maths.pow(a, b)
     def ***(b: Long): BigInt = maths.bigPow(a, b)
+    def ^^(b: Long): BigInt = maths.knuthUpArrow2(a, b)
     def divides(b: Int): Boolean = b % a == 0
     def divides(b: Long): Boolean = b % a == 0
     def divides(b: BigInt): Boolean = b % a == 0

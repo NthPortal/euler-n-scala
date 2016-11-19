@@ -6,6 +6,8 @@ import scala.annotation.tailrec
 import scala.math.Ordering.Implicits._
 
 package object maths {
+  private val big1 = BigInt(1)
+
   /* choose and factorial */
 
   def choose(n: Long, k: Long): BigInt = partialFactorial(n, math.max(k, n - k)) / factorial(math.min(k, n - k))
@@ -76,9 +78,27 @@ package object maths {
   }
 
   @tailrec
-  private def bigPowImpl(a: Long, b: Long, prevResult: BigInt = 1): BigInt = {
+  private def bigPowImpl(a: BigInt, b: Long, prevResult: BigInt = big1): BigInt = {
     if (b == 0) prevResult
     else bigPowImpl(a, b - 1, prevResult * a)
+  }
+
+  // Please don't actually ever call this
+  def knuthUpArrow2(a: Long, b: Long): BigInt = {
+    exponentChecks(a, b)
+    knuthUpArrow2Impl(a, b)
+  }
+
+  @tailrec
+  private def knuthUpArrow2Impl(a: BigInt, b: Long, prevResult: BigInt = big1): BigInt = {
+    if (b == 0) prevResult
+    else knuthUpArrow2Impl(a, b - 1, knuthPowImpl(a, prevResult))
+  }
+
+  @tailrec
+  private def knuthPowImpl(a: BigInt, b: BigInt, prevResult: BigInt = big1): BigInt = {
+    if (b == 0) prevResult
+    else knuthPowImpl(a, b - big1, prevResult * a)
   }
 
   /* fibonacci */
