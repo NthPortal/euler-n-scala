@@ -1,6 +1,7 @@
 package com.nthportal
 
-import com.nthportal.euler.maths.NumericFormat
+import com.nthportal.euler.maths.{NumericFormat, Primes}
+import com.nthportal.euler.maths.streams.Primes
 
 import scala.collection.{GenMapLike, GenSetLike, SeqLike}
 
@@ -21,6 +22,7 @@ package object euler {
     def isEven: Boolean = 2 divides a
     def digits: List[Int] = NumericFormat.digitsOf(a)
     def ! : BigInt = maths.factorial(a)
+    def isPrime(implicit primes: Primes): Boolean = Primes.isPrime(a, primes)
   }
 
   implicit final class CustomRichLong(private val a: Long) extends AnyVal {
@@ -32,6 +34,7 @@ package object euler {
     def isEven: Boolean = 2 divides a
     def digits: List[Int] = NumericFormat.digitsOf(a)
     def ! : BigInt = maths.factorial(a)
+    def isPrime(implicit primes: Primes): Boolean = Primes.isPrime(a, primes)
   }
 
   implicit final class CustomRichBigInt(private val a: BigInt) extends AnyVal {

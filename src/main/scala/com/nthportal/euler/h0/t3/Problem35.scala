@@ -1,14 +1,14 @@
 package com.nthportal.euler
 package h0.t3
 
-import com.nthportal.euler.maths.{Primes, streams}
+import com.nthportal.euler.maths.streams
 
 object Problem35 extends ProjectEulerProblem {
   override def apply(): Long = {
-    val primes = streams.primes
+    implicit val primes = streams.primes
     primes()
       .takeWhile(_ < 1000000)
-      .count(i => rotations(i).forall(Primes.isPrime(_, primes)))
+      .count(rotations(_).forall(_.isPrime))
   }
 
   private def rotations(i: Long): Seq[Long] = {

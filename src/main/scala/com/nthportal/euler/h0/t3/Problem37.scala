@@ -1,32 +1,32 @@
 package com.nthportal.euler
 package h0.t3
 
+import com.nthportal.euler.maths.streams
 import com.nthportal.euler.maths.streams.Primes
-import com.nthportal.euler.maths.{Primes, streams}
 
 object Problem37 extends ProjectEulerProblem {
   override def apply(): Long = {
-    val primes = streams.primes
+    implicit val primes = streams.primes
     primes()
       .dropWhile(_ < 10)
-      .filter(isDoublyTruncatable(_, primes))
+      .filter(isDoublyTruncatable)
       .take(11)
       .sum
   }
 
-  private def isDoublyTruncatable(num: Long, primes: Primes): Boolean = {
-    isRightTruncatable(num, primes) && isLeftTruncatable(num, primes)
+  private def isDoublyTruncatable(num: Long)(implicit primes: Primes): Boolean = {
+    isRightTruncatable(num) && isLeftTruncatable(num)
   }
 
-  private def isRightTruncatable(num: Long, primes: Primes): Boolean = {
+  private def isRightTruncatable(num: Long)(implicit primes: Primes): Boolean = {
     Stream.iterate(num) {_ / 10}
       .takeWhile(_ > 0)
-      .forall(Primes.isPrime(_, primes))
+      .forall(_.isPrime)
   }
 
-  private def isLeftTruncatable(num: Long, primes: Primes): Boolean = {
+  private def isLeftTruncatable(num: Long)(implicit primes: Primes): Boolean = {
     Stream.iterate(num.digits.tail) {_.tail}
       .takeWhile(_.nonEmpty)
-      .forall(digits => Primes.isPrime(digits.asNumber, primes))
+      .forall(_.asNumber.isPrime)
   }
 }

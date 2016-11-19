@@ -1,11 +1,11 @@
 package com.nthportal.euler
 package h0.t4
 
-import com.nthportal.euler.maths.{Primes, streams}
+import com.nthportal.euler.maths.streams
 
 object Problem41 extends ProjectEulerProblem {
   override def apply(): Long = {
-    val primes = streams.primes
+    implicit val primes = streams.primes
 
     {
       for {
@@ -15,7 +15,7 @@ object Problem41 extends ProjectEulerProblem {
         num <- maths.permutationsOf(1 to max)
           .filterNot(permutationNonPrime)
           .map(_.asNumber)
-        if Primes.isPrime(num, primes)
+        if num.isPrime
       } yield num
     }.max
   }
