@@ -27,6 +27,6 @@ object Problem37 extends ProjectEulerProblem {
   private def isLeftTruncatable(num: Long, primes: Primes): Boolean = {
     Stream.iterate(NumericFormat.digitsOf(num).tail) { _.tail }
       .takeWhile(_.nonEmpty)
-      .forall(digits => Primes.isPrime(NumericFormat.fromLongDigits(digits), primes))
+      .forall(digits => Primes.isPrime(NumericFormat.fromDigits(digits), primes))
   }
 }

@@ -8,7 +8,7 @@ object Problem40 extends ProjectEulerProblem {
     droppingStream(Stream.from(1).flatMap(NumericFormat.digitsOf), (0 to 6).map(10 ** _).map(_.toInt).toStream).product
   }
 
-  private def droppingStream(stream: Stream[Long], targets: Stream[Int], alreadyDropped: Int = 0): Stream[Long] = {
+  private def droppingStream(stream: Stream[Int], targets: Stream[Int], alreadyDropped: Int = 0): Stream[Long] = {
     if (targets.isEmpty) {
       Stream.empty
     } else {

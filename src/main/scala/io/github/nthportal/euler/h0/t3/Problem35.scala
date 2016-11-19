@@ -14,6 +14,6 @@ object Problem35 extends ProjectEulerProblem {
   private def rotations(i: Long): Seq[Long] = {
     val digits = NumericFormat.digitsOf(i).toIndexedSeq
     val sequences = for (i <- 0 to digits.length) yield digits.slice(i, digits.length) ++ digits.slice(0, i)
-    sequences.map(NumericFormat.fromLongDigits)
+    sequences.map(NumericFormat.fromDigits)
   }
 }
