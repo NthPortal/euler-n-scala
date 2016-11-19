@@ -35,6 +35,7 @@ package object euler {
     def digits: List[Int] = NumericFormat.digitsOf(a)
     def ! : BigInt = maths.factorial(a)
     def isPrime(implicit primes: Primes): Boolean = Primes.isPrime(a, primes)
+    def choose(k: Long): BigInt = maths.choose(a, k)
   }
 
   implicit final class CustomRichBigInt(private val a: BigInt) extends AnyVal {
