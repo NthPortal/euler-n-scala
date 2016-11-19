@@ -10,7 +10,7 @@ object Problem48 extends ProjectEulerProblem {
 
   override def apply(): Long = {
     val sum = streams.naturals().take(1000)
-      .map(n => maths.bigPow(n, n))
+      .map(n => n *** n)
       .sum
 
     lastNDigits(10, sum).asNumber
