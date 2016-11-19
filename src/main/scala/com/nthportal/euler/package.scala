@@ -9,6 +9,7 @@ import scala.collection.{GenMapLike, GenSetLike, SeqLike}
   */
 package object euler {
   /* Exponents */
+  /* Numeric methods */
   // Value classes cannot be made members of traits, so these cannot
   // be moved to util.maths
 
@@ -20,6 +21,7 @@ package object euler {
     def divides(b: BigInt): Boolean = b % a == 0
     def isEven: Boolean = 2 divides a
     def digits: List[Int] = NumericFormat.digitsOf(a)
+    def ! : BigInt = maths.factorial(a)
   }
 
   implicit final class CustomRichLong(private val a: Long) extends AnyVal {
@@ -30,6 +32,7 @@ package object euler {
     def divides(b: BigInt): Boolean = b % a == 0
     def isEven: Boolean = 2 divides a
     def digits: List[Int] = NumericFormat.digitsOf(a)
+    def ! : BigInt = maths.factorial(a)
   }
 
   implicit final class CustomRichBigInt(private val a: BigInt) extends AnyVal {
