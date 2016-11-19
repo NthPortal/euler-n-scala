@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t3
 
-import com.nthportal.euler.maths
+import com.nthportal.euler.maths.NumericFormat
 
 object Problem32 extends ProjectEulerProblem {
   override def apply(): Long = {
@@ -13,13 +13,12 @@ object Problem32 extends ProjectEulerProblem {
       .sum
   }
 
-  private def combinations(list: Seq[Int]): IndexedSeq[(Int, Int, Int)] = {
-    val product = intFromList(list.slice(5, list.length))
-    for {i <- 1 to 4
-         multiplicand = intFromList(list.slice(0, i))
-         multiplier = intFromList(list.slice(i, 5))
+  private def combinations(list: Seq[Int]): IndexedSeq[(Long, Long, Long)] = {
+    val product = NumericFormat.fromDigits(list.slice(5, list.length))
+    for {
+      i <- 1 to 4
+      multiplicand = NumericFormat.fromDigits(list.slice(0, i))
+      multiplier = NumericFormat.fromDigits(list.slice(i, 5))
     } yield (multiplicand, multiplier, product)
   }
-
-  private def intFromList(list: Seq[Int]): Int = list.fold(0) { _ * 10 + _ }
 }

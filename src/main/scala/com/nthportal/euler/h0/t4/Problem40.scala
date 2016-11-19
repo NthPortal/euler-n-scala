@@ -1,11 +1,9 @@
 package com.nthportal.euler
 package h0.t4
 
-import com.nthportal.euler.maths.NumericFormat
-
 object Problem40 extends ProjectEulerProblem {
   override def apply(): Long = {
-    droppingStream(Stream.from(1).flatMap(NumericFormat.digitsOf), (0 to 6).map(10 ** _).map(_.toInt).toStream).product
+    droppingStream(Stream.from(1).flatMap(_.digits), (0 to 6).map(10 ** _).map(_.toInt).toStream).product
   }
 
   private def droppingStream(stream: Stream[Int], targets: Stream[Int], alreadyDropped: Int = 0): Stream[Long] = {

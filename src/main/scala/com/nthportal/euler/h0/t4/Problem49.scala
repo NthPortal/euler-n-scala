@@ -15,7 +15,7 @@ object Problem49 extends ProjectEulerProblem {
       .filter(_ != 1487)
       .map(n => List(n, n + const, n + const2))
       .filter(_.forall(Primes.isPrime(_, primes)))
-      .map(_.map(NumericFormat.digitsOf))
+      .map(_.map(_.digits))
       .filter(_.map(_.sorted).toSet.size == 1)
       .map(_.reduce(_ ::: _))
       .map(NumericFormat.fromDigits)

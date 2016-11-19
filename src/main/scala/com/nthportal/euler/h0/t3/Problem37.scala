@@ -7,7 +7,7 @@ import com.nthportal.euler.maths.{NumericFormat, Primes, streams}
 object Problem37 extends ProjectEulerProblem {
   override def apply(): Long = {
     val primes = streams.primes
-    primes.get
+    primes()
       .dropWhile(_ < 10)
       .filter(isDoublyTruncatable(_, primes))
       .take(11)
@@ -25,7 +25,7 @@ object Problem37 extends ProjectEulerProblem {
   }
 
   private def isLeftTruncatable(num: Long, primes: Primes): Boolean = {
-    Stream.iterate(NumericFormat.digitsOf(num).tail) { _.tail }
+    Stream.iterate(num.digits.tail) { _.tail }
       .takeWhile(_.nonEmpty)
       .forall(digits => Primes.isPrime(NumericFormat.fromDigits(digits), primes))
   }

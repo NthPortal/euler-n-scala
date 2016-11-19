@@ -1,7 +1,6 @@
 package com.nthportal.euler
 package h0.t4
 
-import com.nthportal.euler.maths
 import com.nthportal.euler.maths.{NumericFormat, Primes, streams}
 
 object Problem41 extends ProjectEulerProblem {

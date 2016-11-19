@@ -6,13 +6,13 @@ import com.nthportal.euler.maths.{NumericFormat, Primes, streams}
 object Problem35 extends ProjectEulerProblem {
   override def apply(): Long = {
     val primes = streams.primes
-    primes.get
+    primes()
       .takeWhile(_ < 1000000)
       .count(i => rotations(i).forall(Primes.isPrime(_, primes)))
   }
 
   private def rotations(i: Long): Seq[Long] = {
-    val digits = NumericFormat.digitsOf(i).toIndexedSeq
+    val digits = i.digits.toIndexedSeq
     val sequences = for (i <- 0 to digits.length) yield digits.slice(i, digits.length) ++ digits.slice(0, i)
     sequences.map(NumericFormat.fromDigits)
   }

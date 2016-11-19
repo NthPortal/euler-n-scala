@@ -9,7 +9,7 @@ object Problem38 extends ProjectEulerProblem {
   private val maxLength = 9
 
   override def apply(): Long = {
-    streams.naturals.get
+    streams.naturals()
       .takeWhile(_ < 10 ** 5)
       .map(concatenatedProduct)
       .filter(_.length == maxLength)

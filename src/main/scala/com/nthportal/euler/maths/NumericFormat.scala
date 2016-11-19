@@ -4,6 +4,8 @@ package maths
 import scala.annotation.tailrec
 
 object NumericFormat {
+  private val big10 = BigInt(10)
+
   def twoDigitStringAsNum(s: String): Int = {
     require(s.length == 2, "Expected string of length 2 - actual length: " + s.length)
     twoDigitStringAsNumImpl(s)
@@ -47,9 +49,9 @@ object NumericFormat {
 
   @tailrec
   private def carryBigDigits(n: BigInt, carry: List[Int] = Nil): List[Int] = {
-    if (n < 10) n.toInt :: carry
+    if (n < big10) n.toInt :: carry
     else {
-      val (d, r) = n /% 10
+      val (d, r) = n /% big10
       carryBigDigits(d, r.toInt :: carry)
     }
   }
