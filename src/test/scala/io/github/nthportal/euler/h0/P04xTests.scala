@@ -28,4 +28,9 @@ class P04xTests extends JUnitSuite {
 
   @Test
   def problem47Test(): Unit = assert(Problem47() == 134043)
+
+  @Test
+  def problem48Test(): Unit = assert(Problem48() == 9110846700L)
+
+  
 }
