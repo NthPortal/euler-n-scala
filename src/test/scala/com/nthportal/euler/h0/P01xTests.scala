@@ -1,38 +1,37 @@
 package com.nthportal.euler.h0
 
 import com.nthportal.euler.h0.t1._
-import org.junit.Assert._
 import org.junit.Test
 import org.scalatest.junit.JUnitSuite
 
 class P01xTests extends JUnitSuite {
   @Test
-  def problem10Test(): Unit = assertEquals(142913828922L, Problem10())
+  def problem10Test(): Unit = assert(Problem10() == 142913828922L)
 
   @Test
-  def problem11Test(): Unit = assertEquals(70600674, Problem11())
+  def problem11Test(): Unit = assert(Problem11() == 70600674)
 
   @Test
-  def problem12Test(): Unit = assertEquals(76576500, Problem12())
+  def problem12Test(): Unit = assert(Problem12() == 76576500)
 
   @Test
-  def problem13Test(): Unit = assertEquals(5537376230L, Problem13())
+  def problem13Test(): Unit = assert(Problem13() == 5537376230L)
 
   @Test
-  def problem14Test(): Unit = assertEquals(837799, Problem14())
+  def problem14Test(): Unit = assert(Problem14() == 837799)
 
   @Test
-  def problem15Test(): Unit = assertEquals(137846528820L, Problem15())
+  def problem15Test(): Unit = assert(Problem15() == 137846528820L)
 
   @Test
-  def problem16Test(): Unit = assertEquals(1366, Problem16())
+  def problem16Test(): Unit = assert(Problem16() == 1366)
 
   @Test
-  def problem17Test(): Unit = assertEquals(21124, Problem17())
+  def problem17Test(): Unit = assert(Problem17() == 21124)
 
   @Test
-  def problem18Test(): Unit = assertEquals(1074, Problem18())
+  def problem18Test(): Unit = assert(Problem18() == 1074)
 
   @Test
-  def problem19Test(): Unit = assertEquals(171, Problem19())
+  def problem19Test(): Unit = assert(Problem19() == 171)
 }
