@@ -1,5 +1,7 @@
 package com.nthportal
 
+import com.nthportal.euler.maths.NumericFormat
+
 import scala.collection.{GenMapLike, GenSetLike, SeqLike}
 
 /**
@@ -10,20 +12,29 @@ package object euler {
   // Value classes cannot be made members of traits, so these cannot
   // be moved to util.maths
 
-  implicit final class CustomRichLong(private val a: Long) extends AnyVal {
-    def **(b: Long) = maths.pow(a, b)
-    def **(b: Int) = maths.pow(a, b)
-    def divides(b: Long): Boolean = b % a == 0
+  implicit final class CustomRichInt(private val a: Int) extends AnyVal {
+    def **(b: Int): Long = maths.pow(a, b)
+    def **(b: Long): Long = maths.pow(a, b)
     def divides(b: Int): Boolean = b % a == 0
+    def divides(b: Long): Boolean = b % a == 0
+    def divides(b: BigInt): Boolean = b % a == 0
     def isEven: Boolean = 2 divides a
+    def digits: List[Int] = NumericFormat.digitsOf(a)
   }
 
-  implicit final class CustomRichInt(private val a: Int) extends AnyVal {
-    def **(b: Long) = maths.pow(a, b)
-    def **(b: Int) = maths.pow(a, b)
-    def divides(b: Long): Boolean = b % a == 0
+  implicit final class CustomRichLong(private val a: Long) extends AnyVal {
+    def **(b: Int): Long = maths.pow(a, b)
+    def **(b: Long): Long = maths.pow(a, b)
     def divides(b: Int): Boolean = b % a == 0
+    def divides(b: Long): Boolean = b % a == 0
+    def divides(b: BigInt): Boolean = b % a == 0
     def isEven: Boolean = 2 divides a
+    def digits: List[Int] = NumericFormat.digitsOf(a)
+  }
+
+  implicit final class CustomRichBigInt(private val a: BigInt) extends AnyVal {
+    def isEven: Boolean = a % 2 == 0
+    def digits: List[Int] = NumericFormat.digitsOf(a)
   }
 
   implicit final class CustomRichDouble(private val a: Double) extends AnyVal {

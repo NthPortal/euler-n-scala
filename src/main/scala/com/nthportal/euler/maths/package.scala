@@ -90,7 +90,7 @@ package object maths {
 
   // Returns ordered list
   def divisors(num: Long, naturals: Naturals = streams.naturals): List[Long] = {
-    val half = naturals.get
+    val half = naturals()
       .filter(num % _ == 0)
       .takeWhile(i => i * i < num)
       .toList

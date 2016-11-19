@@ -17,7 +17,7 @@ object NumericFormat {
   }
 
   def isPalindrome(num: Long): Boolean = {
-    val str = num.toString
+    val str = digitsOf(num)
     str == str.reverse
   }
 
@@ -35,15 +35,24 @@ object NumericFormat {
 
   def digitsOf(n: Int): List[Int] = digitsOf(n.toLong)
 
-  def digitsOf(n: Long): List[Int] = carryDigits(n, Nil)
+  def digitsOf(n: Long): List[Int] = carryDigits(n)
+
+  def digitsOf(n: BigInt): List[Int] = carryBigDigits(n)
 
   @tailrec
-  private def carryDigits(n: Long, carry: List[Int]): List[Int] = {
+  private def carryDigits(n: Long, carry: List[Int] = Nil): List[Int] = {
     if (n < 10) n :: carry
     else carryDigits(n / 10, (n % 10) :: carry)
   }
 
-  def fromDigits(digits: Seq[Int]): Long = digits.foldLeft(0L){ _ * 10 + _ }
+  @tailrec
+  private def carryBigDigits(n: BigInt, carry: List[Int] = Nil): List[Int] = {
+    if (n < 10) n.toInt :: carry
+    else {
+      val (d, r) = n /% 10
+      carryBigDigits(d, r.toInt :: carry)
+    }
+  }
 
-  def fromLongDigits(digits: Seq[Long]): Long = digits.foldLeft(0L){ _ * 10 + _ }
+  def fromDigits(digits: Seq[Int]): Long = digits.foldLeft(0L) {_ * 10 + _}
 }
