@@ -3,7 +3,8 @@ package h0.t4
 
 import com.nthportal.euler.maths
 import com.nthportal.euler.maths.streams.PentagonalNumbers
-import com.nthportal.euler.maths.{CachingStreamChecker, streams}
+import com.nthportal.euler.maths.streams
+import com.nthportal.euler.util.CachingStreamChecker
 
 object Problem44 extends ProjectEulerProblem {
   override def apply(): Long = {

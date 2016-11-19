@@ -1,5 +1,5 @@
 package com.nthportal.euler
-package maths
+package util
 
 import scala.annotation.tailrec
 import scala.collection.mutable
