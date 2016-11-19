@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t3
 
-import com.nthportal.euler.util.maths
+import com.nthportal.euler.maths
 
 object Problem32 extends ProjectEulerProblem {
   override def apply(): Long = {

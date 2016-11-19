@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t3
 
-import com.nthportal.euler.util.maths.Fraction
+import com.nthportal.euler.maths.Fraction
 
 object Problem33 extends ProjectEulerProblem {
   import Fraction.FractionIsNumeric._

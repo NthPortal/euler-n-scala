@@ -1,7 +1,7 @@
 package com.nthportal.euler.h0.t0
 
 import com.nthportal.euler.ProjectEulerProblem
-import com.nthportal.euler.util.maths.NumericFormat
+import com.nthportal.euler.maths.NumericFormat
 
 object Problem4 extends ProjectEulerProblem {
   override def apply(): Long = {

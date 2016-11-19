@@ -1,6 +1,6 @@
-package com.nthportal.euler.util
+package com.nthportal.euler
 
-import com.nthportal.euler.util.maths.streams.Naturals
+import com.nthportal.euler.maths.streams.Naturals
 
 import scala.annotation.tailrec
 

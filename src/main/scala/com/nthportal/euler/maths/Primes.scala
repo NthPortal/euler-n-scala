@@ -1,4 +1,4 @@
-package com.nthportal.euler.util.maths
+package com.nthportal.euler.maths
 
 object Primes {
   def primes: Stream[Long] = streams.primes.get

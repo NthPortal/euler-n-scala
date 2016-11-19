@@ -2,7 +2,7 @@ package com.nthportal.euler
 package h0.t1
 
 import com.nthportal.euler.util.TriangleGraph
-import com.nthportal.euler.util.maths.NumericFormat
+import com.nthportal.euler.maths.NumericFormat
 import org.jgrapht.alg.AStarShortestPath
 
 import scala.collection.JavaConversions

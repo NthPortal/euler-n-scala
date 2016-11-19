@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t2
 
-import com.nthportal.euler.util.maths
+import com.nthportal.euler.maths
 
 object Problem24 extends ProjectEulerProblem {
   private val goal = 1000000

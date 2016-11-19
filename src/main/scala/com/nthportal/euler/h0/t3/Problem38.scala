@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t3
 
-import com.nthportal.euler.util.maths.{NumericFormat, streams}
+import com.nthportal.euler.maths.{NumericFormat, streams}
 
 import scala.annotation.tailrec
 

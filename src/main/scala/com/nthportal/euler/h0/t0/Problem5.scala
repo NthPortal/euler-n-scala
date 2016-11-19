@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t0
 
-import com.nthportal.euler.util.maths.Primes
+import com.nthportal.euler.maths.Primes
 
 object Problem5 extends ProjectEulerProblem {
   override def apply(): Long = {

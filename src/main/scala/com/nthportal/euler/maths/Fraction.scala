@@ -1,4 +1,4 @@
-package com.nthportal.euler.util.maths
+package com.nthportal.euler.maths
 
 import scala.annotation.tailrec
 

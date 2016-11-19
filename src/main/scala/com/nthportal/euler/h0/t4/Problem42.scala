@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t4
 
-import com.nthportal.euler.util.maths.{CachingStreamChecker, streams}
+import com.nthportal.euler.maths.{CachingStreamChecker, streams}
 
 object Problem42 extends ProjectEulerProblem {
   override def apply(): Long = {

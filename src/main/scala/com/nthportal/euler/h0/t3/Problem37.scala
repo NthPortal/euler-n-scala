@@ -1,8 +1,8 @@
 package com.nthportal.euler
 package h0.t3
 
-import com.nthportal.euler.util.maths.streams.Primes
-import com.nthportal.euler.util.maths.{NumericFormat, Primes, streams}
+import com.nthportal.euler.maths.streams.Primes
+import com.nthportal.euler.maths.{NumericFormat, Primes, streams}
 
 object Problem37 extends ProjectEulerProblem {
   override def apply(): Long = {

@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t2
 
-import com.nthportal.euler.util.maths
+import com.nthportal.euler.maths
 
 object Problem29 extends ProjectEulerProblem {
   private val range = 2 to 100

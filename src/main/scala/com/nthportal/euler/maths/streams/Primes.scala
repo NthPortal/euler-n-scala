@@ -1,7 +1,7 @@
-package com.nthportal.euler.util.maths.streams
+package com.nthportal.euler.maths.streams
 
-import com.nthportal.euler.util.maths
-import com.nthportal.euler.util.maths.streams
+import com.nthportal.euler.maths
+import com.nthportal.euler.maths.streams
 
 class Primes private[streams]() extends ReusableStream[Long] {
   import maths.Primes._

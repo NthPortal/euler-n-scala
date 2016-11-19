@@ -1,7 +1,5 @@
 package com.nthportal
 
-import com.nthportal.euler.util.maths
-
 import scala.collection.{GenMapLike, GenSetLike, SeqLike}
 
 /**

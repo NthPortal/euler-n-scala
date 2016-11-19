@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t4
 
-import com.nthportal.euler.util.maths.{Primes, streams}
+import com.nthportal.euler.maths.{Primes, streams}
 
 import scala.annotation.tailrec
 
