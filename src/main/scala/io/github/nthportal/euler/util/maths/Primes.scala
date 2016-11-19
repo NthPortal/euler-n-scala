@@ -18,9 +18,7 @@ object Primes {
     }
   }
 
-  private[maths] def oddNumbers = Stream.iterate[Long](3) { _ + 2 }
-
-  private def basicPrimeSearchStream = 2 #:: oddNumbers
+  private def basicPrimeSearchStream = 2 #:: streams.oddNaturals().drop(1)
 
   private def findPrimeFactors(num: Long, searchStream: Stream[Long]): Stream[Long] = {
     firstFactor(num, searchStream) match {

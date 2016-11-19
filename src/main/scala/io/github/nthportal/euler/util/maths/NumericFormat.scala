@@ -33,14 +33,14 @@ object NumericFormat {
 
   /* digits */
 
-  def digitsOf(n: Int): List[Long] = digitsOf(n.toLong)
+  def digitsOf(n: Int): List[Int] = digitsOf(n.toLong)
 
-  def digitsOf(n: Long): List[Long] = carryDigits(n, Nil)
+  def digitsOf(n: Long): List[Int] = carryDigits(n, Nil)
 
   @tailrec
-  private def carryDigits (n: Long, carry: List[Long]): List[Long] = {
+  private def carryDigits(n: Long, carry: List[Int]): List[Int] = {
     if (n < 10) n :: carry
-    else carryDigits (n/10, (n % 10) :: carry)
+    else carryDigits(n / 10, (n % 10) :: carry)
   }
 
   def fromDigits(digits: Seq[Int]): Long = digits.foldLeft(0L){ _ * 10 + _ }

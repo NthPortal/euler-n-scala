@@ -9,6 +9,8 @@ package object maths {
 
   def choose(n: Long, k: Long): BigInt = partialFactorial(n, math.max(k, n - k)) / factorial(math.min(k, n - k))
 
+  def factorial(n: Int): BigInt = factorial(n.toLong)
+
   def factorial(n: Long): BigInt = {
     n match {
       case 0 => 1
@@ -30,11 +32,11 @@ package object maths {
   private def permutationsFrom(numbers: Seq[Int]): Stream[Seq[Int]] = {
     if (numbers.isEmpty) Stream.empty
     else if (numbers.length == 1) Stream(numbers)
-    else numbers #:: permutationsFrom(permute(numbers, numbers.length - 2))
+    else numbers #:: permutationsFrom(permute(numbers, numbers.length - 2)())
   }
 
   @tailrec
-  private def permute(numbers: Seq[Int], index: Int)(implicit swapWithIndex: Int = numbers.length - 1): Seq[Int] = {
+  private def permute(numbers: Seq[Int], index: Int)(swapWithIndex: Int = numbers.length - 1): Seq[Int] = {
     if (numbers(index) < numbers(swapWithIndex)) {
       numbers.slice(0, index) ++:
         numbers(swapWithIndex) +:
@@ -100,4 +102,12 @@ package object maths {
 
     half ::: sqrtList ::: half.reverse.map(num / _)
   }
+
+  /* Distance between values */
+
+  def dist(a: Long, b: Long): Long = math.abs(a - b)
+
+  def dist(a: Int, b: Int): Int = math.abs(a - b)
+
+  def dist(a: Double, b: Double): Double = math.abs(a - b)
 }
