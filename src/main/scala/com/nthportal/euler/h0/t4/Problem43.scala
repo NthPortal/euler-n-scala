@@ -1,8 +1,8 @@
 package com.nthportal.euler
 package h0.t4
 
+import com.nthportal.euler.maths.streams
 import com.nthportal.euler.maths.streams.Primes
-import com.nthportal.euler.maths.{NumericFormat, streams}
 
 object Problem43 extends ProjectEulerProblem {
   override def apply(): Long = {
@@ -11,7 +11,7 @@ object Problem43 extends ProjectEulerProblem {
     optimizedPermutations
       .filterNot(_.head == 0)
       .filter(isSubstringPrimeDivisible(_, primes))
-      .map(NumericFormat.fromDigits)
+      .map(_.asNumber)
       .sum
   }
 
@@ -28,7 +28,7 @@ object Problem43 extends ProjectEulerProblem {
 
   private def isSubstringPrimeDivisible(digits: Seq[Int], primes: Primes): Boolean = {
     (1 to 7)
-      .map(i => (i, NumericFormat.fromDigits(digits.slice(i, i + 3))))
+      .map(i => (i, digits.slice(i, i + 3).asNumber))
       .forall { case (i, num) => primes.get.drop(i - 1).head divides num }
   }
 }

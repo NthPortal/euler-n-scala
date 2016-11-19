@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t4
 
-import com.nthportal.euler.maths.{NumericFormat, Primes, streams}
+import com.nthportal.euler.maths.{Primes, streams}
 
 object Problem41 extends ProjectEulerProblem {
   override def apply(): Long = {
@@ -14,7 +14,7 @@ object Problem41 extends ProjectEulerProblem {
         if !digitSetNonPrime(digits)
         num <- maths.permutationsOf(1 to max)
           .filterNot(permutationNonPrime)
-          .map(NumericFormat.fromDigits)
+          .map(_.asNumber)
         if Primes.isPrime(num, primes)
       } yield num
     }.max

@@ -1,8 +1,6 @@
 package com.nthportal.euler
 package h0.t1
 
-import com.nthportal.euler.maths.NumericFormat
-
 object Problem17 extends ProjectEulerProblem {
   private val numbers = Map(
     1 -> "one", 2 -> "two", 3 -> "three", 4 -> "four", 5 -> "five", 6 -> "six",
@@ -52,7 +50,7 @@ object Problem17 extends ProjectEulerProblem {
   }
 
   private def twoDigitsAsStr(digits: Seq[Int]): String = {
-    if (digits.head == 1) numbers(NumericFormat.fromDigits(digits))
+    if (digits.head == 1) numbers(digits.asNumber)
     else if (digits.last == 0) tens(firstDigit(digits))
     else tens(firstDigit(digits)) + "-" + numAsStr(digits.tail)
   }

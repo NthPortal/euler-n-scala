@@ -8,7 +8,6 @@ import scala.collection.{GenMapLike, GenSetLike, SeqLike}
   * Custom Predef
   */
 package object euler {
-  /* Exponents */
   /* Numeric methods */
   // Value classes cannot be made members of traits, so these cannot
   // be moved to util.maths
@@ -42,6 +41,10 @@ package object euler {
 
   implicit final class CustomRichDouble(private val a: Double) extends AnyVal {
     def **(b: Double) = math.pow(a, b)
+  }
+
+  implicit class DigitsToLong(private val seq: Seq[Int]) extends AnyVal {
+    def asNumber: Long = NumericFormat.fromDigits(seq)
   }
 
   implicit def int2Long(int: Int): Long = int.toLong

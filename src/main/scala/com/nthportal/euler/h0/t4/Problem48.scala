@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t4
 
-import com.nthportal.euler.maths.{NumericFormat, streams}
+import com.nthportal.euler.maths.streams
 
 import scala.annotation.tailrec
 
@@ -13,7 +13,7 @@ object Problem48 extends ProjectEulerProblem {
       .map(n => maths.bigPow(n, n))
       .sum
 
-    NumericFormat.fromDigits(lastNDigits(10, sum))
+    lastNDigits(10, sum).asNumber
   }
 
   @tailrec

@@ -1,8 +1,6 @@
 package com.nthportal.euler
 package h0.t3
 
-import com.nthportal.euler.maths.NumericFormat
-
 object Problem32 extends ProjectEulerProblem {
   override def apply(): Long = {
     maths.permutationsOf(1 to 9)
@@ -14,11 +12,11 @@ object Problem32 extends ProjectEulerProblem {
   }
 
   private def combinations(list: Seq[Int]): IndexedSeq[(Long, Long, Long)] = {
-    val product = NumericFormat.fromDigits(list.slice(5, list.length))
+    val product = list.slice(5, list.length).asNumber
     for {
       i <- 1 to 4
-      multiplicand = NumericFormat.fromDigits(list.slice(0, i))
-      multiplier = NumericFormat.fromDigits(list.slice(i, 5))
+      multiplicand = list.slice(0, i).asNumber
+      multiplier = list.slice(i, 5).asNumber
     } yield (multiplicand, multiplier, product)
   }
 }

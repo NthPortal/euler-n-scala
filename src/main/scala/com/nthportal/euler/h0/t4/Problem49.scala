@@ -1,7 +1,7 @@
 package com.nthportal.euler
 package h0.t4
 
-import com.nthportal.euler.maths.{NumericFormat, Primes, streams}
+import com.nthportal.euler.maths.{Primes, streams}
 
 object Problem49 extends ProjectEulerProblem {
   override def apply(): Long = {
@@ -18,7 +18,7 @@ object Problem49 extends ProjectEulerProblem {
       .map(_.map(_.digits))
       .filter(_.map(_.sorted).toSet.size == 1)
       .map(_.reduce(_ ::: _))
-      .map(NumericFormat.fromDigits)
+      .map(_.asNumber)
       .head
   }
 }
