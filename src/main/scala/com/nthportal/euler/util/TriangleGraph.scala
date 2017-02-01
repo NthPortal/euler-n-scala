@@ -6,7 +6,7 @@ import com.nthportal.euler.util.TriangleGraph._
 import org.jgrapht.alg.interfaces.AStarAdmissibleHeuristic
 import org.jgrapht.{DirectedGraph, EdgeFactory}
 
-import scala.collection.JavaConversions
+import scala.collection.JavaConverters._
 
 final class TriangleGraph(triangle: List[List[Int]]) extends DirectedGraph[Vertex, Edge] {
   val heuristicPerDistanceUnit = 1
@@ -23,7 +23,7 @@ final class TriangleGraph(triangle: List[List[Int]]) extends DirectedGraph[Verte
   override def outDegreeOf(vertex: Vertex): Int = outgoingEdgesOf(vertex).size
 
   override def outgoingEdgesOf(vertex: Vertex): util.Set[Edge] = {
-    JavaConversions.setAsJavaSet(vertex.adjacent.map(EdgeImpl(vertex, _)))
+    setAsJavaSet(vertex.adjacent.map(EdgeImpl(vertex, _)))
   }
 
   override def inDegreeOf(vertex: Vertex): Int = ???
