@@ -8,6 +8,5 @@ scalaVersion := "2.12.1"
 
 libraryDependencies ++= Seq(
   "org.jgrapht" % "jgrapht-core" % "0.9.2",
-  "junit" % "junit" % "4.12" % Test,
   "org.scalatest" %% "scalatest" % "3.0.+" % Test
 )
