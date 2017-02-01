@@ -1,37 +1,26 @@
-package com.nthportal.euler.h0
+package com.nthportal.euler
+package h0
 
 import com.nthportal.euler.h0.t1._
-import org.junit.Test
-import org.scalatest.junit.JUnitSuite
 
-class P01xTests extends JUnitSuite {
-  @Test
-  def problem10Test(): Unit = assert(Problem10() == 142913828922L)
+class P01xTests extends SimpleSpec {
+  Problem10 shouldEvaluateTo 142913828922L
 
-  @Test
-  def problem11Test(): Unit = assert(Problem11() == 70600674)
+  Problem11 shouldEvaluateTo 70600674
 
-  @Test
-  def problem12Test(): Unit = assert(Problem12() == 76576500)
+  Problem12 shouldEvaluateTo 76576500
 
-  @Test
-  def problem13Test(): Unit = assert(Problem13() == 5537376230L)
+  Problem13 shouldEvaluateTo 5537376230L
 
-  @Test
-  def problem14Test(): Unit = assert(Problem14() == 837799)
+  Problem14 shouldEvaluateTo 837799
 
-  @Test
-  def problem15Test(): Unit = assert(Problem15() == 137846528820L)
+  Problem15 shouldEvaluateTo 137846528820L
 
-  @Test
-  def problem16Test(): Unit = assert(Problem16() == 1366)
+  Problem16 shouldEvaluateTo 1366
 
-  @Test
-  def problem17Test(): Unit = assert(Problem17() == 21124)
+  Problem17 shouldEvaluateTo 21124
 
-  @Test
-  def problem18Test(): Unit = assert(Problem18() == 1074)
+  Problem18 shouldEvaluateTo 1074
 
-  @Test
-  def problem19Test(): Unit = assert(Problem19() == 171)
+  Problem19 shouldEvaluateTo 171
 }

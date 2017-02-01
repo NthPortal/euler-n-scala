@@ -4,6 +4,7 @@ import com.nthportal.euler.maths.{NumericFormat, Primes}
 import com.nthportal.euler.maths.streams.Primes
 
 import scala.collection.{GenMapLike, GenSetLike, SeqLike}
+import scala.language.implicitConversions
 
 /**
   * Custom Predef

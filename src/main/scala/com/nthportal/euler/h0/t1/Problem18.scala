@@ -5,7 +5,7 @@ import com.nthportal.euler.util.TriangleGraph
 import com.nthportal.euler.maths.NumericFormat
 import org.jgrapht.alg.AStarShortestPath
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 object Problem18 extends ProjectEulerProblem {
   private val triangleStr =
@@ -38,7 +38,7 @@ object Problem18 extends ProjectEulerProblem {
     val search = new AStarShortestPath(graph)
     val path = search.getShortestPath(graph.root, graph.goal, graph.heuristic)
 
-    path.getEdgeList
+    asScalaBuffer(path.getEdgeList)
       .toStream
       .map(_.source.triangleValue.toLong)
       .sum

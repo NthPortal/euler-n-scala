@@ -1,10 +1,8 @@
-package com.nthportal.euler.h0
+package com.nthportal.euler
+package h0
 
 import com.nthportal.euler.h0.t5._
-import org.junit.Test
-import org.scalatest.junit.JUnitSuite
 
-class P05xTests extends JUnitSuite {
-  @Test
-  def problem50Test(): Unit = assert(Problem50() == 997651)
+class P05xTests extends SimpleSpec {
+  Problem50 shouldEvaluateTo 997651
 }
