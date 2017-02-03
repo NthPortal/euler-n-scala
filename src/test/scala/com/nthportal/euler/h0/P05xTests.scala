@@ -5,4 +5,6 @@ import com.nthportal.euler.h0.t5._
 
 class P05xTests extends SimpleSpec {
   Problem50 shouldEvaluateTo 997651
+
+  Problem51 shouldEvaluateTo 121313
 }
