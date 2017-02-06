@@ -20,8 +20,13 @@ object NumericFormat {
   }
 
   def isPalindrome(num: Long): Boolean = {
-    val str = digitsOf(num)
-    str == str.reverse
+    val digits = digitsOf(num)
+    digits == digits.reverse
+  }
+
+  def isPalindrome(num: BigInt): Boolean = {
+    val digits = digitsOf(num)
+    digits == digits.reverse
   }
 
   def isBinaryPalindrome(num: Long): Boolean = {
@@ -75,4 +80,6 @@ object NumericFormat {
   }
 
   def fromDigits(digits: Seq[Int]): Long = digits.foldLeft(0L) {_ * 10 + _}
+
+  def bigFromDigits(digits: Seq[Int]): BigInt = digits.foldLeft(big0) {_ * big10 + _}
 }

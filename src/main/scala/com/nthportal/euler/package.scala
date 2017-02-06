@@ -10,6 +10,8 @@ import scala.language.implicitConversions
   * Custom Predef
   */
 package object euler {
+  private val big2 = BigInt(2)
+
   /* Numeric methods */
   // Value classes cannot be made members of traits, so these cannot
   // be moved to util.maths
@@ -44,16 +46,17 @@ package object euler {
   }
 
   implicit final class CustomRichBigInt(private val a: BigInt) extends AnyVal {
-    def isEven: Boolean = a % 2 == 0
+    def isEven: Boolean = a % big2 == 0
     def digits: List[Int] = NumericFormat.digitsOf(a)
   }
 
   implicit final class CustomRichDouble(private val a: Double) extends AnyVal {
-    def **(b: Double) = math.pow(a, b)
+    def **(b: Double): Double = math.pow(a, b)
   }
 
   implicit class DigitsToLong(private val seq: Seq[Int]) extends AnyVal {
     def asNumber: Long = NumericFormat.fromDigits(seq)
+    def asBigNumber: BigInt = NumericFormat.bigFromDigits(seq)
   }
 
   implicit def int2Long(int: Int): Long = int.toLong
