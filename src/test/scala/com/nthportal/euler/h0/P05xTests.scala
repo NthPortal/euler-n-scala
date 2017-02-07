@@ -17,4 +17,6 @@ class P05xTests extends SimpleSpec {
   Problem55 shouldEvaluateTo 249
 
   Problem56 shouldEvaluateTo 972
+
+  Problem57 shouldEvaluateTo 153
 }

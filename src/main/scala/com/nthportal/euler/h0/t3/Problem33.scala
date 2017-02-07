@@ -5,7 +5,7 @@ import com.nthportal.euler.maths.Fraction
 
 object Problem33 extends ProjectEulerProblem {
 
-  import Fraction.FractionIsNumeric._
+  import Fraction.FractionIsFractional._
 
   override def apply(): Long = {
     for {
